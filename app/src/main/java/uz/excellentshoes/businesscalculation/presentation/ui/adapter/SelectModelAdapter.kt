@@ -1,0 +1,70 @@
+package uz.excellentshoes.businesscalculation.presentation.ui.adapter
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import uz.excellentshoes.businesscalculation.R
+import uz.excellentshoes.businesscalculation.data.types.ShoeModelData
+import uz.excellentshoes.businesscalculation.databinding.ItemCommonSelectBinding
+
+class SelectModelAdapter(
+    private val onItemClicked: (ShoeModelData) -> Unit
+) : ListAdapter<ShoeModelData, SelectModelAdapter.SelectModelViewHolder>(SelectColorDiffUtil) {
+    private var selectedItemPosition: Int? = null
+
+
+    object SelectColorDiffUtil : DiffUtil.ItemCallback<ShoeModelData>() {
+        override fun areItemsTheSame(oldItem: ShoeModelData, newItem: ShoeModelData): Boolean {
+            return oldItem == newItem
+        }
+
+        override fun areContentsTheSame(oldItem: ShoeModelData, newItem: ShoeModelData): Boolean {
+            return oldItem.objectName == newItem.objectName
+        }
+
+    }
+
+    inner class SelectModelViewHolder(private val binding: ItemCommonSelectBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(data: ShoeModelData, isSelected: Boolean) {
+            binding.txtName.text = data.shoeModelName
+            binding.root.background = if(isSelected){
+                ContextCompat.getDrawable(binding.root.context, R.drawable.bg_item_selected)
+            }else{
+                ContextCompat.getDrawable(binding.root.context, R.drawable.bg_item_unselected)
+            }
+
+            binding.txtName.setTextColor(
+                if(isSelected){
+                    ContextCompat.getColor(binding.root.context, R.color.white)
+                }else{
+                    ContextCompat.getColor(binding.root.context, R.color.main_color)
+                }
+            )
+
+            binding.root.setOnClickListener{
+                val previousSelectedItemPosition = selectedItemPosition
+                selectedItemPosition = bindingAdapterPosition
+                previousSelectedItemPosition?.let { notifyItemChanged(it) }
+                notifyItemChanged(bindingAdapterPosition)
+                onItemClicked(data)
+            }
+        }
+
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SelectModelViewHolder {
+        return SelectModelViewHolder(
+            ItemCommonSelectBinding.bind(
+                LayoutInflater.from(parent.context).inflate(
+                    R.layout.item_common_select,parent,false)))
+    }
+
+    override fun onBindViewHolder(holder: SelectModelViewHolder, position: Int) {
+        val data = getItem(position)
+        val isSelected = position == selectedItemPosition
+        holder.bind(data,isSelected)
+    }
+}

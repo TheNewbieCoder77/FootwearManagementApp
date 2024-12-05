@@ -1,0 +1,130 @@
+package uz.excellentshoes.businesscalculation.presentation.viewmodel.impl
+
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.toList
+import kotlinx.coroutines.launch
+import uz.excellentshoes.businesscalculation.data.types.DeclinedShoeData
+import uz.excellentshoes.businesscalculation.data.types.FinishedShoeCheckData
+import uz.excellentshoes.businesscalculation.data.types.PreparedShoeMakerData
+import uz.excellentshoes.businesscalculation.data.types.PreparedToSailData
+import uz.excellentshoes.businesscalculation.domain.impl.CommonShoeCheckerRepositoryImpl
+import uz.excellentshoes.businesscalculation.presentation.viewmodel.CommonShoeCheckerViewModel
+
+class CommonShoeCheckerViewModelImpl(private val currentDate: String) : ViewModel(), CommonShoeCheckerViewModel {
+    override val progressBarShoeCheckerLiveData = MutableLiveData<Boolean>()
+    override val preparedShoeMakerDataListStateFlow = MutableStateFlow<List<PreparedShoeMakerData>>(emptyList())
+    override val shoeCountStateFlow = MutableStateFlow<Int?>(null)
+    override val finishedShoeCountStateFlow = MutableStateFlow<Int?>(null)
+    override val progressBarDeclinedShoeLiveData = MutableLiveData<Boolean>()
+    override val declinedShoeDataListStateFlow = MutableStateFlow<List<DeclinedShoeData>>(emptyList())
+    private val commonRepository = CommonShoeCheckerRepositoryImpl.getInstance()
+
+    init {
+        loadingInitialShoeCount()
+        loadingInitialFinishedShoeCount()
+        observeShoeCount()
+        observeFinishedShoeCount()
+    }
+
+    private fun loadingInitialShoeCount(){
+        commonRepository.getInitialShoeCount(currentDate)
+            .addOnSuccessListener { initialCount->
+                shoeCountStateFlow.value = initialCount
+            }
+    }
+    private fun loadingInitialFinishedShoeCount(){
+        commonRepository.getInitialFinishedShoeCount(currentDate)
+            .addOnSuccessListener { initialFinishedCount->
+                finishedShoeCountStateFlow.value = initialFinishedCount
+            }
+    }
+
+    private fun observeShoeCount(){
+        viewModelScope.launch {
+            commonRepository.observeShoeCount(currentDate)
+                .collect { newCount->
+                    shoeCountStateFlow.value = newCount
+                }
+        }
+    }
+
+    private fun observeFinishedShoeCount(){
+        viewModelScope.launch {
+            commonRepository.observeFinishedShoeCount(currentDate)
+                .collect{ newFinishedCount->
+                    finishedShoeCountStateFlow.value = newFinishedCount
+                }
+        }
+    }
+
+    override fun getAllPreparedShoeMakerData() {
+        progressBarShoeCheckerLiveData.value = true
+        viewModelScope.launch {
+            commonRepository.getAllPreparedShoeMakerData().collect{ dataList->
+                preparedShoeMakerDataListStateFlow.value = dataList
+                progressBarShoeCheckerLiveData.postValue(false)
+            }
+        }
+    }
+
+    override fun addDeclinedShoeData(data: DeclinedShoeData) {
+        viewModelScope.launch {
+            commonRepository.addDeclinedShoeData(data)
+        }
+    }
+
+    override fun deletePreparedShoeMakerData(objectName: String) {
+        viewModelScope.launch {
+            commonRepository.deletePreparedShoeMakerData(objectName)
+        }
+    }
+
+    override fun addShoeSellerData(data: PreparedToSailData) {
+        viewModelScope.launch {
+            commonRepository.addShoeSellerData(data)
+        }
+    }
+
+    override fun addFinishedShoeCheck(data: FinishedShoeCheckData) {
+        viewModelScope.launch {
+            commonRepository.addFinishedShoeCheck(data)
+        }
+    }
+
+    override fun showShoeCheckerProgressBar(state: Boolean) {
+        progressBarShoeCheckerLiveData.value = state
+    }
+
+
+    override fun getAllDeclinedShoeData() {
+        progressBarDeclinedShoeLiveData.value = true
+        viewModelScope.launch {
+            commonRepository.getAllDeclinedShoeData().collect { list ->
+                declinedShoeDataListStateFlow.value = list
+                progressBarDeclinedShoeLiveData.postValue(false)
+            }
+        }
+    }
+
+    override fun deleteDeclinedShoeData(objectName: String) {
+        viewModelScope.launch {
+            commonRepository.deleteDeclinedShoeData(objectName)
+        }
+    }
+
+    override fun addPreparedShoeDataList(dataList: List<PreparedShoeMakerData>) {
+        progressBarDeclinedShoeLiveData.value = true
+        viewModelScope.launch {
+            commonRepository.addPreparedShoeMakeList(dataList)
+            progressBarDeclinedShoeLiveData.postValue(false)
+        }
+    }
+
+}

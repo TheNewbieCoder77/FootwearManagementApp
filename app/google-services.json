@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "256031681601",
+    "project_id": "business-calculation-b4852",
+    "storage_bucket": "business-calculation-b4852.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:256031681601:android:1cf9dc81842addfd682ac0",
+        "android_client_info": {
+          "package_name": "uz.excellentshoes.businesscalculation"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCN-s9y7vilDY7krKzsqs01d0uRvTa5BJg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

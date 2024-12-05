@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/background_color"
+    android:elevation="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/onProgressLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_on_progress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgClock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_clock"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/progressLayout"
+            app:layout_constraintVertical_bias="0.44"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/txtOnProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/jarayondagi_oyoq_kiyimlar"
+            android:textSize="18sp"
+            android:textColor="@color/on_progress_color"
+            app:layout_constraintTop_toTopOf="@id/imgClock"
+            app:layout_constraintStart_toEndOf="@id/imgClock"
+            android:layout_marginStart="8dp"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeMaxTextSize="20sp"
+            android:autoSizeStepGranularity="1sp"
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/txtPairsCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="15/45"
+            android:textColor="@color/additional_color"
+            android:textSize="18sp"
+            app:layout_constraintTop_toTopOf="@id/txtOnProgress"
+            app:layout_constraintBottom_toBottomOf="@id/txtOnProgress"
+            app:layout_constraintEnd_toEndOf="@id/progressLayout"/>
+
+        <ProgressBar
+            android:id="@+id/progressLayout"
+            android:layout_width="match_parent"
+            android:layout_height="14dp"
+            android:background="@drawable/bg_progress"
+            android:progressDrawable="@drawable/download_progress_style"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:indeterminate="false"
+            android:indeterminateOnly="false"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintVertical_bias="0.8"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/txtPlaceHolder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tayyor_oyoq_kiyim_yo_q"
+        android:textSize="24sp"
+        android:textColor="@color/shimmer_color"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/onProgressLayout"
+        android:visibility="gone"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerShoeChecker"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/onProgressLayout"
+        android:paddingTop="8dp"
+        android:background="@color/background_color"
+        android:layout_marginTop="32dp"
+        tools:listitem="@layout/item_shoe_checker" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/main_color"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

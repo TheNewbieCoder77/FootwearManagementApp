@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Business Calculation</string>
+    <string name="footwear_management">Roberto Bossi</string>
+    <string name="kirish">Kirish</string>
+    <string name="parol_kiriting">Parol</string>
+    <string name="ismingizni_kiriting">Ismingizni kiriting</string>
+    <string name="model_nomini_kiriting">Model nomini kiriting</string>
+    <string name="rangni_kiriting">Rangni kiriting</string>
+    <string name="necha_juft_oyoq_kiyimligini_yozing">Necha juft oyoq kiyimligini yozing</string>
+    <string name="teri_nomini_kiriting">Teri nomini kiriting</string>
+    <string name="izoh">Izoh</string>
+    <string name="qabul_qilish">Qabul qilish</string>
+    <string name="ish_olish">Ish olish</string>
+    <string name="bugungi_ish">Bugungi ish</string>
+    <string name="jarayondagi_oyoq_kiyimlar">Jarayondagi oyoq kiyimlar</string>
+    <string name="xatolik_to_g_irlandi">Xatolik to\'g\'irlandi</string>
+    <string name="xato_aniqlandi">Xato aniqlandi</string>
+    <string name="bichilgan_teri_yo_q">Bichilgan teri yo\'q...</string>
+    <string name="tikish_jarayonida_teri_yo_q">Tikish jarayonida teri yo\'q...</string>
+    <string name="tayyor_bichilgan_teri_yo_q">Tayyor bichilgan teri yo\'q...</string>
+    <string name="tayyor_tikilgan_teri_yo_q">Tayyor tikilgan teri yo\'q...</string>
+    <string name="tayyor_oyoq_kiyim_yo_q">Tayyor oyoq kiyim yo\'q...</string>
+    <string name="xatolik_aniqlangan_oyoq_kiyim_yo_q">Xatolik aniqlangan oyoq kiyim yo\'q</string>
+    <string name="chiqim_sababini_yozing">Chiqim sababini yozing</string>
+    <string name="oldi_berdi_sababini_yozing">Oldi-berdi sababini yozing</string>
+    <string name="foyda_va_harajatlar_yo_q">Foyda va harajatlar yo\'q...</string>
+    <string name="tayyor_ish_mavjud_emas">Tayyor ish mavjud emas..</string>
+</resources>

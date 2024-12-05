@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/background_color">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerConsumption"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/containerOfContainers"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingHorizontal="8dp"
+        android:layout_marginTop="8dp"
+        tools:listitem="@layout/item_money_spend"/>
+
+    <TextView
+        android:id="@+id/txtPlaceHolder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/foyda_va_harajatlar_yo_q"
+        android:textSize="24sp"
+        android:textColor="@color/shimmer_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/containerOfContainers"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/main_color"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/containerOfContainers"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/containerOfContainers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.02"
+        android:orientation="horizontal"
+        android:paddingHorizontal="8dp"
+        android:weightSum="2"
+        android:background="@color/background_color">
+
+        <LinearLayout
+            android:id="@+id/leftContainers"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginVertical="8dp"
+            android:layout_marginEnd="4dp"
+            android:background="@color/background_color">
+
+            <LinearLayout
+                android:id="@+id/containerPaid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_white"
+                android:paddingVertical="20dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:elevation="8dp">
+
+                <TextView
+                    android:id="@+id/txtPaid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="To'langan"
+                    android:textColor="@color/on_progress_color"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/txtPaidMoney"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="$231"
+                    android:textColor="@color/additional_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeMinTextSize="12sp"
+                    android:autoSizeMaxTextSize="20sp"
+                    android:autoSizeStepGranularity="2sp"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/containerUnPaid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_white"
+                android:paddingVertical="20dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:elevation="8dp"
+                android:layout_marginVertical="8dp">
+
+                <TextView
+                    android:id="@+id/txtUnPaid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="To'lanishi kerak"
+                    android:textColor="@color/decline_border_color"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/txtUnPaidMoney"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="$425"
+                    android:textColor="@color/additional_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeMinTextSize="12sp"
+                    android:autoSizeMaxTextSize="20sp"
+                    android:autoSizeStepGranularity="2sp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rightContainers"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginVertical="8dp"
+            android:layout_marginStart="4dp"
+            android:background="@color/background_color">
+
+            <LinearLayout
+                android:id="@+id/containerEarned"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_white"
+                android:paddingVertical="20dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:elevation="8dp">
+
+                <TextView
+                    android:id="@+id/txtEarned"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Olindi"
+                    android:textColor="@color/on_progress_color"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/txtEarnedMoney"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="$425"
+                    android:textColor="@color/additional_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeMinTextSize="12sp"
+                    android:autoSizeMaxTextSize="20sp"
+                    android:autoSizeStepGranularity="2sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/containerNotEarned"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_white"
+                android:paddingVertical="20dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:elevation="8dp"
+                android:layout_marginVertical="8dp">
+
+                <TextView
+                    android:id="@+id/txtNotEarned"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Olinishi kerak"
+                    android:textColor="@color/decline_border_color"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/txtNotEarnedMoney"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="$425"
+                    android:textColor="@color/additional_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeMinTextSize="12sp"
+                    android:autoSizeMaxTextSize="20sp"
+                    android:autoSizeStepGranularity="2sp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="24dp"
+        android:src="@drawable/ic_plus"
+        app:tint="@color/white"
+        app:backgroundTint="@color/main_color"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
