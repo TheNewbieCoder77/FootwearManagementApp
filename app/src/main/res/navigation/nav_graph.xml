@@ -114,6 +114,9 @@
         <action
             android:id="@+id/action_adminScreen_to_tablayoutFinishedWorksScreen"
             app:destination="@id/tablayoutFinishedWorksScreen" />
+        <action
+            android:id="@+id/action_adminScreen_to_soldShoesScreen"
+            app:destination="@id/soldShoesScreen" />
     </fragment>
     <fragment
         android:id="@+id/moneySpenderScreen"
@@ -218,4 +221,9 @@
         android:id="@+id/tablayoutFinishedWorksScreen"
         android:name="uz.excellentshoes.businesscalculation.presentation.ui.screen.TablayoutFinishedWorksScreen"
         android:label="TablayoutFinishedWorksScreen" />
+    <fragment
+        android:id="@+id/soldShoesScreen"
+        android:name="uz.excellentshoes.businesscalculation.presentation.ui.screen.SoldShoesScreen"
+        android:label="SoldShoesScreen"
+        tools:layout="@layout/screen_sold_shoes"/>
 </navigation>

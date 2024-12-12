@@ -122,6 +122,7 @@ class AdminScreen : Fragment(R.layout.screen_admin) {
                 7 -> showDollarCurrencyDialog()
                 8 -> showPhoneDataDialog()
                 9 -> findNavController().navigate(R.id.action_adminScreen_to_tablayoutFinishedWorksScreen)
+                10 -> findNavController().navigate(R.id.action_adminScreen_to_soldShoesScreen)
             }
         }
 

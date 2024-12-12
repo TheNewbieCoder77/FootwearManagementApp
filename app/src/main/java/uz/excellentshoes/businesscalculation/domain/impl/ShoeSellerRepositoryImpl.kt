@@ -65,7 +65,34 @@ class ShoeSellerRepositoryImpl private constructor() : ShoeSellerRepository {
         objectRef.removeValue().await()
     }
 
+    override fun getAllSoldShoeData(): Flow<List<SoldShoeData>> = callbackFlow<List<SoldShoeData>> {
+        val listener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val dataList = if(snapshot.exists() && snapshot.hasChildren()){
+                    snapshot.children.mapNotNull { data ->
+                        data.getValue(SoldShoeData::class.java)
+                    }
+                }else{
+                    emptyList()
+                }
+                trySend(dataList)
+            }
 
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+            }
+        databaseReferenceSoldShoeData.addValueEventListener(listener)
+        awaitClose {
+            databaseReferenceSoldShoeData.removeEventListener(listener)
+
+        }
+    }.flowOn(Dispatchers.IO)
+
+    override suspend fun deleteSoldShoeData(objectName: String) {
+        val objectRef = databaseReferenceSoldShoeData.child(objectName)
+        objectRef.removeValue().await()
+    }
 
 
     companion object {

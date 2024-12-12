@@ -8,4 +8,7 @@ interface ShoeSellerRepository {
     fun getAllPreparedToSailData(): Flow<List<PreparedToSailData>>
     suspend fun addSoldShoeDataList(dataList: List<SoldShoeData>): Boolean
     suspend fun deletePreparedToSailData(objectName: String)
+
+    fun getAllSoldShoeData(): Flow<List<SoldShoeData>>
+    suspend fun deleteSoldShoeData(objectName: String)
 }

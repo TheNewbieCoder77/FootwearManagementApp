@@ -21,36 +21,19 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/main_color"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="Admin"
+            app:title="Sotilgan oyoq kiyimlar"
             app:titleTextColor="@color/white"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerAdmin"
+        android:id="@+id/recyclerSoldShoes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appBar"
         app:layout_constraintBottom_toBottomOf="parent"
         android:paddingTop="7dp"
-        tools:listitem="@layout/item_admin_categories"
-        android:paddingBottom="16dp"
-        android:background="@color/background_color"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="24dp"
-        android:layout_marginEnd="24dp"
-        android:src="@drawable/ic_plus"
-        app:tint="@color/white"
-        app:backgroundTint="@color/main_color"/>
-
+        tools:listitem="@layout/item_sold_shoe"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -60,9 +43,8 @@
         android:indeterminate="true"
         android:indeterminateTint="@color/main_color"
         android:visibility="gone"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBar"/>
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBar"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
