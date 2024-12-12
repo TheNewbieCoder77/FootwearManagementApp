@@ -12,4 +12,5 @@ interface ShoeSellerViewModel {
     fun addSoldShoeList(dataList: List<SoldShoeData>)
     fun deleteShoeSell(objectName: String)
     fun getPreparedToSailData()
+    fun searchData(query: String)
 }

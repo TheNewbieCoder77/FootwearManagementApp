@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -51,7 +52,22 @@ class ShoeSellerScreen : Fragment(R.layout.screen_shoe_seller) {
         setAdapter()
         clickEvents()
         setObservers()
+        setSearchView()
         viewModel.getPreparedToSailData()
+    }
+
+    private fun setSearchView(){
+        binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                viewModel.searchData(newText.orEmpty())
+                return true
+            }
+
+        })
     }
 
     private fun clickEvents(){

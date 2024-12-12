@@ -62,7 +62,7 @@
         android:layout_height="50dp"
         android:background="?android:attr/listChoiceIndicatorMultiple"
         android:button="@null"
-        android:buttonTint="?android:attr/listChoiceIndicatorMultiple"
+        android:buttonTint="@color/additional_color"
         app:layout_constraintTop_toBottomOf="@id/txtCount"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
