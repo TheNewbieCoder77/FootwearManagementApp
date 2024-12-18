@@ -8,6 +8,7 @@ import uz.excellentshoes.businesscalculation.data.types.PhoneData
 import uz.excellentshoes.businesscalculation.data.types.ShoeColorData
 import uz.excellentshoes.businesscalculation.data.types.ShoeModelData
 import uz.excellentshoes.businesscalculation.data.types.SkinTypeData
+import uz.excellentshoes.businesscalculation.data.types.UnitData
 import uz.excellentshoes.businesscalculation.data.types.UserPasswordData
 
 interface CommonAdminRepository {
@@ -34,7 +35,7 @@ interface CommonAdminRepository {
 
     suspend fun addDollarCurrency(data: DollarCurrencyData)
     suspend fun addPhoneData(phoneData: PhoneData)
-
+    suspend fun addUnitData(data: UnitData)
 
     suspend fun upsertUserData(data: UserPasswordData)
     suspend fun deleteUserData(objectName: String)

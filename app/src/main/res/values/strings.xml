@@ -25,4 +25,7 @@
     <string name="oldi_berdi_sababini_yozing">Oldi-berdi sababini yozing</string>
     <string name="foyda_va_harajatlar_yo_q">Foyda va harajatlar yo\'q...</string>
     <string name="tayyor_ish_mavjud_emas">Tayyor ish mavjud emas..</string>
+    <string name="mahsulot_qoldig_i">Mahsulot qoldig\'i</string>
+    <string name="mahsulot_rangi">Mahsulot rangi</string>
+    <string name="mahsulot_nomi">Mahsulot nomi</string>
 </resources>

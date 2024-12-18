@@ -21,6 +21,7 @@ import uz.excellentshoes.businesscalculation.presentation.ui.adapter.AdminCatego
 import uz.excellentshoes.businesscalculation.presentation.ui.dialog.AddCategoryBottomsheetDialog
 import uz.excellentshoes.businesscalculation.presentation.ui.dialog.AddDollarCurrencyBottomsheetDialog
 import uz.excellentshoes.businesscalculation.presentation.ui.dialog.AddPhoneDataBottomsheetDialog
+import uz.excellentshoes.businesscalculation.presentation.ui.dialog.AddUnitBottomsheetDialog
 import uz.excellentshoes.businesscalculation.presentation.viewmodel.AdminCategoryViewModel
 import uz.excellentshoes.businesscalculation.presentation.viewmodel.impl.AdminCategoryViewModelImpl
 import uz.excellentshoes.businesscalculation.utils.hide
@@ -104,6 +105,15 @@ class AdminScreen : Fragment(R.layout.screen_admin) {
         dialog.show()
     }
 
+    private fun showAddUnitDialog(){
+        val dialog = AddUnitBottomsheetDialog(requireContext())
+        dialog.setOnAddButtonClickedListener {
+            viewModel.addUnit(it)
+            dialog.dismiss()
+        }
+        dialog.show()
+    }
+
     private fun setAdapter() {
         adapter = AdminCategoryAdapter()
         binding.recyclerAdmin.apply {
@@ -123,6 +133,7 @@ class AdminScreen : Fragment(R.layout.screen_admin) {
                 8 -> showPhoneDataDialog()
                 9 -> findNavController().navigate(R.id.action_adminScreen_to_tablayoutFinishedWorksScreen)
                 10 -> findNavController().navigate(R.id.action_adminScreen_to_soldShoesScreen)
+                11 -> showAddUnitDialog()
             }
         }
 

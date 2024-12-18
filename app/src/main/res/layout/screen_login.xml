@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="32sp"
-        android:textColor="#6e5114"
+        android:textColor="@color/main_color"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:text="@string/footwear_management"

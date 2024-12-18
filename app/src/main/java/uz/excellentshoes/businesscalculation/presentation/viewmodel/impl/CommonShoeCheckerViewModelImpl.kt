@@ -1,14 +1,9 @@
 package uz.excellentshoes.businesscalculation.presentation.viewmodel.impl
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 import uz.excellentshoes.businesscalculation.data.types.DeclinedShoeData
 import uz.excellentshoes.businesscalculation.data.types.FinishedShoeCheckData
@@ -25,6 +20,7 @@ class CommonShoeCheckerViewModelImpl(private val currentDate: String) : ViewMode
     override val progressBarDeclinedShoeLiveData = MutableLiveData<Boolean>()
     override val declinedShoeDataListStateFlow = MutableStateFlow<List<DeclinedShoeData>>(emptyList())
     private val commonRepository = CommonShoeCheckerRepositoryImpl.getInstance()
+    private var counter = -1
 
     init {
         loadingInitialShoeCount()
@@ -50,7 +46,8 @@ class CommonShoeCheckerViewModelImpl(private val currentDate: String) : ViewMode
         viewModelScope.launch {
             commonRepository.observeShoeCount(currentDate)
                 .collect { newCount->
-                    shoeCountStateFlow.value = newCount
+                    if(counter > 0 && newCount == 0) shoeCountStateFlow.value = counter
+                    else shoeCountStateFlow.value = newCount
                 }
         }
     }
@@ -68,6 +65,7 @@ class CommonShoeCheckerViewModelImpl(private val currentDate: String) : ViewMode
         progressBarShoeCheckerLiveData.value = true
         viewModelScope.launch {
             commonRepository.getAllPreparedShoeMakerData().collect{ dataList->
+                counter = dataList.size
                 preparedShoeMakerDataListStateFlow.value = dataList
                 progressBarShoeCheckerLiveData.postValue(false)
             }

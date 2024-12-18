@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.StateFlow
 import uz.excellentshoes.businesscalculation.data.types.CategoryItemData
 import uz.excellentshoes.businesscalculation.data.types.DollarCurrencyData
 import uz.excellentshoes.businesscalculation.data.types.PhoneData
+import uz.excellentshoes.businesscalculation.data.types.UnitData
 
 interface AdminCategoryViewModel {
     val progressBarLiveData: LiveData<Boolean>
@@ -15,4 +16,5 @@ interface AdminCategoryViewModel {
     fun deleteCategory(objectName: String)
     fun addDollarCurrency(data: DollarCurrencyData)
     fun addPhoneData(phoneData: PhoneData)
+    fun addUnit(unitData: UnitData)
 }

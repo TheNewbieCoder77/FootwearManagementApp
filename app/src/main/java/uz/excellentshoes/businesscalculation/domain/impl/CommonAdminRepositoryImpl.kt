@@ -18,6 +18,7 @@ import uz.excellentshoes.businesscalculation.data.types.PhoneData
 import uz.excellentshoes.businesscalculation.data.types.ShoeColorData
 import uz.excellentshoes.businesscalculation.data.types.ShoeModelData
 import uz.excellentshoes.businesscalculation.data.types.SkinTypeData
+import uz.excellentshoes.businesscalculation.data.types.UnitData
 import uz.excellentshoes.businesscalculation.data.types.UserPasswordData
 import uz.excellentshoes.businesscalculation.domain.CommonAdminRepository
 
@@ -30,8 +31,8 @@ class CommonAdminRepositoryImpl private constructor(): CommonAdminRepository {
     private val databaseReferenceDollarCurrencyData = App.database.getReference("DollarCurrencyData")
     private val databaseReferencePhoneData = App.database.getReference("PhoneData")
     private val databaseReferenceUserPasswordData = App.database.getReference("UserPasswordData")
+    private val databaseReferenceUnitData = App.database.getReference("UnitData")
     private val appPreferences = AppPreferences.getInstance()
-
 
 
     companion object{
@@ -252,6 +253,10 @@ class CommonAdminRepositoryImpl private constructor(): CommonAdminRepository {
         }
 
         appPreferences.currencyDollar = data.dollarCurrency
+    }
+
+    override suspend fun addUnitData(data: UnitData) {
+        databaseReferenceUnitData.push().setValue(data).await()
     }
 
     override suspend fun addPhoneData(phoneData: PhoneData) {

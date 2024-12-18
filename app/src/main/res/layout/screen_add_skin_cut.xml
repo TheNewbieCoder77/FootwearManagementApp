@@ -197,12 +197,12 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/layoutInputComment"
-                app:layout_constraintBottom_toBottomOf="@id/layoutInputComment"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:backgroundTint="@null"
                 android:text="@string/qabul_qilish"
                 android:textColor="@color/white"
                 android:textSize="24sp"
-                android:layout_marginBottom="32dp"/>
+                android:layout_marginVertical="16dp"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

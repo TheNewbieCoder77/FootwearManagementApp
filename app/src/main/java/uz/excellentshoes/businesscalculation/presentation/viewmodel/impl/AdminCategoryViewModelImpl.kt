@@ -8,6 +8,7 @@ import kotlinx.coroutines.launch
 import uz.excellentshoes.businesscalculation.data.types.CategoryItemData
 import uz.excellentshoes.businesscalculation.data.types.DollarCurrencyData
 import uz.excellentshoes.businesscalculation.data.types.PhoneData
+import uz.excellentshoes.businesscalculation.data.types.UnitData
 import uz.excellentshoes.businesscalculation.domain.impl.CommonAdminRepositoryImpl
 import uz.excellentshoes.businesscalculation.presentation.viewmodel.AdminCategoryViewModel
 
@@ -47,6 +48,12 @@ class AdminCategoryViewModelImpl : ViewModel(),AdminCategoryViewModel {
     override fun addPhoneData(phoneData: PhoneData) {
         viewModelScope.launch {
             commonRepository.addPhoneData(phoneData)
+        }
+    }
+
+    override fun addUnit(unitData: UnitData) {
+        viewModelScope.launch {
+            commonRepository.addUnitData(unitData)
         }
     }
 
